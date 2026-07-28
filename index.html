@@ -1,5 +1,245 @@
-<html>
-    <body>
-        login
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Nest | Home</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="#" onclick="showSection('home')">
+        <img src="images/recipe.jpg" width="40" height="40" class="me-2 rounded circle"> Recipe Nest
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item">
+            <a class="nav-link active" id="nav-home" href="#" onclick="showSection('home')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-recipe" href="#" onclick="showSection('recipe')">Recipes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-add" href="#" onclick="showSection('add')">Add New</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="flex-grow-1">
+    
+    <!-- PAGE 1: HOME PAGE  -->
+    <section id="home-section" class="page-section active">
+      
+      <!-- FULL-WIDTH HERO SLIDER WITH OVERLAY TEXT -->
+      <div id="heroCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- Carousel Slides -->
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <img src="images/vege salad.jpg" class="d-block w-100" >
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <img src="images/pizza.jpg" class="d-block w-100">
+                    </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <img src="images/HomeRecipe.jpg" class="d-block w-100">
+          </div>
+        </div>
+
+        <!-- Overlay Text Content -->
+        <div class="hero-overlay-content d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7 col-lg-6 text-white text-start">
+                <h1 class="display-3 fw-bold mb-3">Fresh & Vibrant Flavors</h1>
+                <p class="lead mb-4">Discover healthy recipes curated by the food community.</p>
+                <button class="btn btn-danger btn-lg px-4 py-2 fw-semibold border-0 shadow" style="background-color: #ff5a5f;" onclick="showSection('recipe')">
+                  Explore Recipes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+      </div>
+
+      <!-- ABOUT SECTION -->
+      <div class="container py-5 text-center">
+        <div class="py-4">
+          <h2 class="fw-bold text-dark mb-3">Your Digital Culinary Scrapbook</h2>
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <p class="text-secondary fs-5">
+                Recipe Nest is an interactive space where cooking enthusiasts can catalog household secret recipes, filter dishes by meal categories, and learn new cooking methods instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!--  PAGE 2: RECIPES PAGE  -->
+    <section id="recipe-section" class="page-section">
+      <div class="container py-5">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold text-dark">Shared Recipe Hub</h2>
+          <p class="text-muted">Explore delicious food recipes shared by food lovers worldwide</p>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap">
+          <button class="btn btn-outline-dark btn-filter active" onclick="filterRecipes('All')">All</button>
+          <button class="btn btn-outline-dark btn-filter" onclick="filterRecipes('Breakfast')">Breakfast</button>
+          <button class="btn btn-outline-dark btn-filter" onclick="filterRecipes('Lunch')">Lunch</button>
+          <button class="btn btn-outline-dark btn-filter" onclick="filterRecipes('Dinner')">Dinner</button>
+        </div>
+
+        <!-- Recipe Cards Grid -->
+        <div class="row g-4" id="recipe-container">
+          
+          <!-- 1. BREAKFAST CARD -->
+          <div class="col-md-4 recipe-item" data-category="Breakfast">
+            <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+              <img src="images/fluffy pancake.jpg" class="card-img-top" alt="Fluffy Pancakes" style="height: 200px; object-fit: cover;">
+              <div class="card-body p-4">
+                <span class="badge bg-warning text-dark mb-2">Breakfast</span>
+                <h5 class="card-title fw-bold">Fluffy Pancakes</h5>
+                <p class="card-text mb-1 text-danger fw-semibold">Ingredients:</p>
+                <p class="card-text text-muted small">Flour, Milk, Eggs, Sugar, Baking Powder, Maple Syrup</p>
+                <p class="card-text mb-1 text-danger fw-semibold">Instructions:</p>
+                <p class="card-text text-muted small">Mix dry and wet ingredients. Cook on a hot skillet until golden brown.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. LUNCH CARD -->
+          <div class="col-md-4 recipe-item" data-category="Lunch">
+            <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+              <img src="images/Garden Bowl.jpg" class="card-img-top" alt="Fresh Garden Bowl" style="height: 200px; object-fit: cover;">
+              <div class="card-body p-4">
+                <span class="badge bg-success text-white mb-2">Lunch</span>
+                <h5 class="card-title fw-bold">Fresh Garden Bowl</h5>
+                <p class="card-text mb-1 text-danger fw-semibold">Ingredients:</p>
+                <p class="card-text text-muted small">Quinoa, Avocado, Cherry Tomatoes, Cucumbers, Olive Oil</p>
+                <p class="card-text mb-1 text-danger fw-semibold">Instructions:</p>
+                <p class="card-text text-muted small">Assemble cooked quinoa and chopped vegetables in a bowl. Drizzle with dressing.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. DINNER CARD WITH IMAGE -->
+          <div class="col-md-4 recipe-item" data-category="Dinner">
+            <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+              <img src="images/Tuskan Cream Pasta.jpg" class="card-img-top" alt="Tuscan Cream Pasta" style="height: 200px; object-fit: cover;">
+              <div class="card-body p-4">
+                <span class="badge bg-danger text-white mb-2">Dinner</span>
+                <h5 class="card-title fw-bold">Tuscan Cream Pasta</h5>
+                <p class="card-text mb-1 text-danger fw-semibold">Ingredients:</p>
+                <p class="card-text text-muted small">Penne Pasta, Heavy Cream, Garlic, Spinach, Sun-dried Tomatoes</p>
+                <p class="card-text mb-1 text-danger fw-semibold">Instructions:</p>
+                <p class="card-text text-muted small">Boil pasta. Sauté garlic and tomatoes in cream, toss pasta and wilt spinach before serving.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: ADD NEW RECIPE PAGE  -->
+    <section id="add-section" class="page-section">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+              <h2 class="text-center fw-bold text-dark mb-2">Share Your Secret Recipe</h2>
+              <p class="text-center text-muted small mb-4">Contribute your food entry to the directory feed view</p>
+              
+              <form id="recipeForm" onsubmit="validateAndSubmit(event)">
+                <div class="mb-3">
+                  <label for="recipeName" class="form-label fw-semibold">Recipe Name</label>
+                  <input type="text" class="form-control" id="recipeName" placeholder="e.g. Spicy Cream Pasta">
+                </div>
+                <div class="mb-3">
+                  <label for="mealCategory" class="form-label fw-semibold">Meal Category</label>
+                  <select class="form-select" id="mealCategory">
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="ingredients" class="form-label fw-semibold">Ingredients</label>
+                  <textarea class="form-control" id="ingredients" rows="3" placeholder="List key ingredients..."></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="instructions" class="form-label fw-semibold">Instructions</label>
+                  <textarea class="form-control" id="instructions" rows="3" placeholder="Step-by-step description..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger w-100 py-3 rounded-3 fw-bold border-0" style="background-color: #ff5a5f;">
+                  Publish Instantly
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (Appears on every page) -->
+  <footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container text-center">
+      <div class="d-flex align-items-center justify-content-center mb-2">
+        <span class="fw-bold">Recipe Nest</span>
+      </div>
+      <p class="small text-secondary mb-0">
+        &copy; Recipe Nest. Interactive Digital Recipe Directory. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
 </html>
